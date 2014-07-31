@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <script src="../jquery-1.9.1.min.js"></script>
+        <script src="http://127.0.0.1:8080/socket.io/socket.io.js"></script>
+    </head>
+    <body>
+      
+
+      <button id="strikeSolenoid">Strike solenoid</button>
+
+    </body>
+
+    <script>
+    var socket = io.connect("127.0.0.1:8080");
+
+    var status = 1;
+
+    var hitBell = function (status) {
+      console.log('hitting with ' + status);
+
+      socket.emit('hitBell', status);
+    }
+
+    
+    
+
+    $('#strikeSolenoid').on('click', function(){
+      hitBell(status);
+    });
+
+  </script>
+
+</html>
